@@ -1,2 +1,2 @@
-# JDK8
-JDK8新特性
+# JavaSE
+Java基础学习
