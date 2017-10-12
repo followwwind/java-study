@@ -13,7 +13,7 @@ import java.util.function.Predicate;
 public class Predicates {
 	
 	public static void collectPre(){
-		Collection<String> c = new ArrayList<String>();  
+		Collection<String> c = new ArrayList<>();
         for (int i = 0; i < 10; i++) { // 加入0 ~ 9的字符串  
             c.add(String.valueOf(i));  
         }  

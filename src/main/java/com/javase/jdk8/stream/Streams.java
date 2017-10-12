@@ -22,7 +22,7 @@ import javax.swing.event.ListSelectionEvent;
  *
  */
 public class Streams {
-	static List<String> lists = new ArrayList<String>();
+	static List<String> lists = new ArrayList<>();
 	static {
 		lists.add("1");
 		lists.add("2");

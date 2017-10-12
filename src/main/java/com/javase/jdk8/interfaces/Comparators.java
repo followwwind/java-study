@@ -11,11 +11,14 @@ import java.util.List;
  *
  */
 public class Comparators {
+
 	public static void main(String[] args) {
-		Comparator<Person> comparator = (p1, p2) -> p1.getFirstName().compareTo(p2.getFirstName());   
-	    
-		Person pp1 = new Person("John", "Doe");   
-		Person pp2 = new Person("Alice", "Wonderland");  
+		//可以简化成如下方式
+//		Comparator<Person> comparator2 = (p1, p2) -> p1.getAge().compareTo(p2.getAge());
+
+		Comparator<Person> comparator = Comparator.comparing(Person::getAge);
+		Person pp1 = new Person("John", 18);
+		Person pp2 = new Person("Alice", 20);
 		
 		
 		    
@@ -27,10 +30,14 @@ public class Comparators {
 		List<Person> persons = Arrays.asList(pp1, pp2);
 		
 		Collections.sort(persons, comparator);
-		persons.forEach(p -> System.out.print(p.getFirstName() + "\t"));
+		persons.forEach(p -> System.out.print(p.getAge() + "\t"));
 		System.out.println();
-		Collections.sort(persons, (p1, p2) -> p2.getFirstName().compareTo(p1.getFirstName()));
-		persons.forEach(p -> System.out.print(p.getFirstName() + "\t"));
-		System.out.println();
+		Collections.sort(persons, (p1, p2) -> {
+			int age = p2.getAge() - p1.getAge();
+			return age > 0 ? 1 : (age == 0 ? 0 : -1);
+		});
+		persons.forEach(p -> System.out.print(p.getAge() + "\t"));
+
 	}
 }
+

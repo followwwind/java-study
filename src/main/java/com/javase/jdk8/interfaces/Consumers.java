@@ -10,22 +10,21 @@ import java.util.function.Predicate;
  */
 public class Consumers {
 	public static void main(String[] args) {
-		Consumer<Person> greeter = (p) -> System.out.println("Hello, " + p.getFirstName());   
-		greeter.accept(new Person("Luke", "Skywalker"));  
+		Consumer<Person> greeter = (p) -> System.out.println("Hello, " + p.getName());
+		greeter.accept(new Person("Luke", 18));
 		
 		
-		Person p1 = new Person("follow", "wind");
-		Person p2 = new Person("followwwind", "mi");
-		System.out.println(p1.getFirstName());
-		System.out.println(p2.getFirstName());
+		Person p1 = new Person("follow", 21);
+		Person p2 = new Person("followwwind", 27);
+
 		p1 = updatePerson(p1, 
-				p -> "follow".equals(p.getFirstName()), 
-				p -> p.setFirstName("hello"));
+				p -> "follow".equals(p.getName()),
+				p -> p.setName("hello"));
 		p2 = updatePerson(p2, 
-				p -> "follow".equals(p.getFirstName()), 
-				p -> p.setFirstName("hello"));
-		System.out.println(p1.getFirstName()); 
-		System.out.println(p2.getFirstName());
+				p -> "follow".equals(p.getName()),
+				p -> p.setName("hello"));
+		System.out.println(p1.getName());
+		System.out.println(p2.getName());
 	}
 	
 	public static Person updatePerson(Person p, Predicate<Person> predicate, Consumer<Person> consumer){
